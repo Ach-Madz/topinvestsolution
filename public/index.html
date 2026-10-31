@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TopInvest Solution - Solusi investasi cerdas, transparan, dan terukur berbasis analisis mendalam. Konsultasi AI tersedia 24/7.">
+    <title>TopInvest Solution - Solusi Investasi & Finansial Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo"><i class="fa-solid fa-chart-line"></i> TopInvest<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#fitur">Layanan</a></li>
+                <li><a href="#kalkulator">Kalkulator ROI</a></li>
+                <li><a href="#keunggulan">Keunggulan</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#kontak" class="btn btn-primary nav-btn">Konsultasi Gratis</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <span class="badge"><i class="fa-solid fa-shield-halved"></i> Terdaftar & Diawasi OJK</span>
+                <h1>Wujudkan Kebebasan Finansial Bersama <span>TopInvest</span></h1>
+                <p>Solusi investasi cerdas, transparan, dan terukur berbasis analisis mendalam untuk memaksimalkan pertumbuhan aset Anda secara berkelanjutan.</p>
+                <div class="hero-btns">
+                    <a href="#kalkulator" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Hitung Simulasi</a>
+                    <a href="#kontak" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Hubungi Penasihat</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><h4>Rp 2.5T+</h4><p>Total Dana Kelolaan</p></div>
+                    <div class="stat-item"><h4>45.000+</h4><p>Investor Aktif</p></div>
+                    <div class="stat-item"><h4>14.8%</h4><p>Rata-rata Return/Thn</p></div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-glass">
+                    <div class="card-header">
+                        <div>
+                            <p style="font-size:0.85rem;color:var(--text-muted);">Portofolio Pertumbuhan TopInvest</p>
+                            <h3>Strategi Agresif 2026</h3>
+                        </div>
+                        <span class="trend-badge"><i class="fa-solid fa-arrow-trend-up"></i> +18.4%</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="asset-row"><span><i class="fa-solid fa-circle" style="color:#10B981;"></i> Saham Blue Chip</span><strong>45%</strong></div>
+                        <div class="asset-row"><span><i class="fa-solid fa-circle" style="color:#3B82F6;"></i> Obligasi Pemerintah</span><strong>35%</strong></div>
+                        <div class="asset-row"><span><i class="fa-solid fa-circle" style="color:#F59E0B;"></i> Pasar Uang & Kas</span><strong>20%</strong></div>
+                    </div>
+                    <div class="card-footer"><small><i class="fa-solid fa-circle-check" style="color:#10B981;"></i> Rebalancing otomatis setiap kuartal</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fitur" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Layanan Keuangan Profesional</h2>
+                <p>Kami menyediakan berbagai instrumen dan strategi investasi yang disesuaikan dengan profil risiko serta tujuan keuangan Anda.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card"><div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div><h3>Manajemen Portofolio</h3><p>Pengelolaan dana profesional yang dipersonalisasi sesuai profil risiko untuk imbal hasil optimal.</p></div>
+                <div class="service-card"><div class="icon-wrapper"><i class="fa-solid fa-piggy-bank"></i></div><h3>Perencanaan Pensiun</h3><p>Strategi dana pensiun jangka panjang untuk memastikan masa tua yang tenang dan sejahtera secara finansial.</p></div>
+                <div class="service-card"><div class="icon-wrapper"><i class="fa-solid fa-building-columns"></i></div><h3>Obligasi & Pasar Uang</h3><p>Pilihan investasi risiko rendah hingga sedang dengan pendapatan tetap yang stabil dan terjamin.</p></div>
+                <div class="service-card"><div class="icon-wrapper"><i class="fa-solid fa-hand-holding-dollar"></i></div><h3>Konsultasi Pajak Aset</h3><p>Perencanaan efisiensi pajak untuk portofolio investasi individu maupun skala korporasi.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kalkulator" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simulasi Solusi Investasi Anda</h2>
+                <p>Hitung potensi pertumbuhan aset dan keajaiban bunga majemuk dalam beberapa tahun ke depan.</p>
+            </div>
+            <div class="calc-grid">
+                <div class="calc-controls">
+                    <div class="control-group"><label for="initialModal">Modal Awal: <strong id="valInitial">Rp 10.000.000</strong></label><input type="range" id="initialModal" min="1000000" max="100000000" step="1000000" value="10000000"></div>
+                    <div class="control-group"><label for="monthlyInvestment">Investasi Bulanan: <strong id="valMonthly">Rp 1.000.000</strong></label><input type="range" id="monthlyInvestment" min="100000" max="10000000" step="100000" value="1000000"></div>
+                    <div class="control-group"><label for="investmentYears">Jangka Waktu: <strong id="valYears">5 Tahun</strong></label><input type="range" id="investmentYears" min="1" max="20" step="1" value="5"></div>
+                    <div class="control-group"><label for="expectedReturn">Estimasi Return per Tahun: <strong id="valReturn">12%</strong></label><input type="range" id="expectedReturn" min="4" max="25" step="1" value="12"></div>
+                    <div style="background:rgba(16,185,129,0.1);padding:15px;border-radius:10px;border-left:4px solid var(--accent-emerald);">
+                        <p style="margin:0;font-size:0.9rem;color:#d1d5db;">Estimasi Total Hasil akhir:</p>
+                        <h3 id="finalResult" style="color:var(--accent-emerald);font-size:1.8rem;margin-top:5px;">Rp 0</h3>
+                    </div>
+                </div>
+                <div class="calc-chart"><canvas id="roiChart"></canvas></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keunggulan" class="features">
+        <div class="container">
+            <div class="section-header"><h2>Mengapa Memilih TopInvest Solution?</h2><p>Kombinasi antara teknologi analisis mutakhir dan kepakaran manajer investasi teruji.</p></div>
+            <div class="services-grid">
+                <div class="service-card"><i class="fa-solid fa-lock fa-2x" style="color:var(--accent-gold);margin-bottom:15px;"></i><h3>Keamanan Terjamin</h3><p>Seluruh transaksi disektor teratur dan diawasi oleh OJK serta menggunakan enkripsi tingkat tinggi.</p></div>
+                <div class="service-card"><i class="fa-solid fa-eye fa-2x" style="color:var(--accent-gold);margin-bottom:15px;"></i><h3>Transparansi Biaya</h3><p>Bebas biaya tersembunyi. Semua laporan biaya transaksi dan pengelolaan disajikan transparan.</p></div>
+                <div class="service-card"><i class="fa-solid fa-headset fa-2x" style="color:var(--accent-gold);margin-bottom:15px;"></i><h3>Dukungan Dedicated Advisory</h3><p>Tim konsultan kami siap mendampingi perjalanan finansial Anda setiap hari kerja.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="testimonials">
+        <div class="container">
+            <div class="section-header"><h2>Apa Kata Klien Kami</h2><p>Ribuan investor telah mencapai target finansial mereka bersama TopInvest.</p></div>
+            <div class="services-grid">
+                <div class="service-card"><p style="font-style:italic;color:#d1d5db;margin-bottom:20px;">"Berkat TopInvest, portofolio dan perencanaan dana pendidikan anak saya jadi jauh lebih terarah dengan return yang konsisten di atas inflasi."</p><strong>Budi Santoso</strong><p style="font-size:0.85rem;color:var(--accent-gold);">Pengusaha & Investor</p></div>
+                <div class="service-card"><p style="font-style:italic;color:#d1d5db;margin-bottom:20px;">"Fitur kalkulator simulasi dan pendampingan dari tim advisor-nya sangat membantu saya menentukan strategi diversifikasi modal usaha."</p><strong>Siti Rahmawati</strong><p style="font-size:0.85rem;color:var(--accent-gold);">Professional Manager</p></div>
+                <div class="service-card"><p style="font-style:italic;color:#d1d5db;margin-bottom:20px;">"Laporan transparan setiap bulan membuat saya merasa aman menaruh dana jangka panjang di TopInvest Solution."</p><strong>Hendrik Wijaya</strong><p style="font-size:0.85rem;color:var(--accent-gold);">Karyawan Swasta</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header"><h2>Pertanyaan Umum (FAQ)</h2><p>Jawaban atas pertanyaan yang sering diajukan mengenai investasi di TopInvest Solution.</p></div>
+            <div class="faq-container">
+                <div class="faq-item"><div class="faq-question"><span>Berapa minimal investasi awal di TopInvest Solution?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Anda dapat memulai investasi dari hanya Rp 100.000 untuk produk pasar uang, dan mulai dari Rp 1.000.000 untuk portofolio saham terkelola.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>Apakah dana saya aman dan terdaftar resmi?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Ya, TopInvest Solution terdaftar dan diawasi resmi oleh OJK, serta dana Anda disimpan aman di Bank Kustodian independen.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>Bagaimana cara pencairan dana investasi?</span><i class="fa-solid fa-chevron-down"></i></div><div class="faq-answer"><p>Pencairan dana dapat dilakukan kapan saja melalui aplikasi atau portal web resmi TopInvest, dengan proses transfer maksimal 1-3 hari kerja.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <div class="contact-box">
+                <div class="section-header"><h2>Mulai Perjalanan Finansial Anda</h2><p>Jadwalkan sesi konsultasi gratis 1-on-1 dengan Financial Advisor senior kami.</p></div>
+                <form id="leadForm" class="contact-form">
+                    <div class="form-group"><input type="text" id="fullName" placeholder="Nama Lengkap" required></div>
+                    <div class="form-group"><input type="email" id="email" placeholder="Alamat Email" required></div>
+                    <div class="form-group"><input type="tel" id="phone" placeholder="Nomor WhatsApp" required></div>
+                    <button type="submit" class="btn btn-primary btn-block">Jadwalkan Konsultasi Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo"><i class="fa-solid fa-chart-line"></i> TopInvest<span>.</span></div>
+            <p style="margin-top:10px;font-size:0.9rem;">&copy; 2026 TopInvest Solution. Hak Cipta Dilindungi Undang-Undang.</p>
+            <p style="font-size:0.8rem;margin-top:5px;opacity:0.7;">Investasi mengandung risiko. Kinerja masa lalu tidak menjamin hasil masa depan.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING AI CHATBOT WIDGET -->
+    <div id="chat-widget">
+        <button id="chat-toggle-btn" aria-label="Buka TIS AI Assistant">
+            <i class="fa-solid fa-robot" id="chat-icon-open"></i>
+            <i class="fa-solid fa-xmark" id="chat-icon-close" style="display:none;"></i>
+            <span class="chat-badge">AI</span>
+        </button>
+        <div id="chat-panel">
+            <div id="chat-panel-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <strong>TIS Assistant</strong>
+                        <small>Asisten Investasi AI &bull; Online</small>
+                    </div>
+                </div>
+                <button id="chat-close-btn" aria-label="Tutup chat"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chat-box">
+                <div class="chat-msg bot">
+                    <div class="chat-bubble">Halo! Saya <b>TIS Assistant</b>, asisten investasi AI TopInvest Solution. Ada yang bisa saya bantu? 😊</div>
+                </div>
+            </div>
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Tanya seputar investasi..." autocomplete="off" required />
+                <button type="submit" id="send-btn" aria-label="Kirim pesan"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
