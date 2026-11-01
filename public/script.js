@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
     // ===== LANDING PAGE SCRIPTS =====
 
@@ -134,6 +134,34 @@
         return div.innerHTML;
     }
 
+    // Simple markdown → HTML parser for bot responses
+    function parseMarkdown(text) {
+        // Escape HTML first to prevent XSS
+        var escaped = escapeHTML(text);
+        // Bold: **text** or __text__
+        escaped = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        escaped = escaped.replace(/__(.+?)__/g, '<strong>$1</strong>');
+        // Italic: *text* or _text_
+        escaped = escaped.replace(/\*([^\*]+)\*/g, '<em>$1</em>');
+        escaped = escaped.replace(/_([^_]+)_/g, '<em>$1</em>');
+        // Inline code: `code`
+        escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+        // Bullet list: lines starting with - or *
+        escaped = escaped.replace(/^[\-\*] (.+)$/gm, '<li>$1</li>');
+        escaped = escaped.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+        // Numbered list: 1. item
+        escaped = escaped.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+        // Line breaks: double newline = paragraph
+        var paragraphs = escaped.split(/\n{2,}/);
+        escaped = paragraphs.map(function(p) {
+            p = p.trim();
+            if (p.startsWith('<ul>') || p.startsWith('<li>')) return p;
+            p = p.replace(/\n/g, '<br>');
+            return '<p>' + p + '</p>';
+        }).join('');
+        return escaped;
+    }
+
     function appendMessage(role, html, isHtml) {
         var row = document.createElement('div');
         row.className = 'chat-msg ' + role;
@@ -193,7 +221,7 @@
             var data = await response.json();
             var reply = data.result || 'Maaf, tidak ada respons dari server.';
             conversation.push({ role: 'bot', text: reply });
-            appendMessage('bot', escapeHTML(reply), false);
+            appendMessage('bot', parseMarkdown(reply), true);
         } catch (err) {
             removeTyping();
             appendMessage('bot', 'Maaf, terjadi kesalahan. Coba lagi sebentar ya. 🙏', true);

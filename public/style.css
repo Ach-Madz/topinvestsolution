@@ -1,4 +1,4 @@
-﻿/* ===== LANDING PAGE STYLES ===== */
+/* ===== LANDING PAGE STYLES ===== */
 :root {
     --bg-primary: #0F172A;
     --bg-secondary: #1E293B;
@@ -33,7 +33,7 @@ body {
 
 h1, h2, h3, h4 { color: #FFFFFF; font-weight: 700; }
 
-span { color: var(--accent-emerald); }
+h1 span, h2 span, h3 span, .logo span { color: var(--accent-emerald); }
 
 .btn {
     display: inline-block;
@@ -173,7 +173,10 @@ footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border
 @media (max-width: 768px) {
     .hero-container, .calc-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .nav-btn { display: none; }
     .hero-text h1 { font-size: 2.2rem; }
+    .hero-stats { flex-wrap: wrap; gap: 15px; }
+    .section-header h2 { font-size: 1.8rem; }
 }
 
 /* ===== FLOATING AI CHATBOT WIDGET ===== */
@@ -225,7 +228,8 @@ footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border
 /* Chat Panel */
 #chat-panel {
     width: 360px;
-    height: 500px;
+    max-height: 520px;
+    height: 520px;
     background: #1E293B;
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 20px;
@@ -366,6 +370,22 @@ footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border
 #send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 @media (max-width: 480px) {
-    #chat-panel { width: calc(100vw - 40px); height: 450px; }
+    #chat-panel { width: calc(100vw - 40px); height: min(480px, calc(100dvh - 100px)); max-height: calc(100dvh - 100px); }
     #chat-widget { bottom: 16px; right: 16px; }
+}
+
+/* Bot bubble markdown formatting */
+.chat-msg.bot .chat-bubble p { margin-bottom: 8px; }
+.chat-msg.bot .chat-bubble p:last-child { margin-bottom: 0; }
+.chat-msg.bot .chat-bubble ul,
+.chat-msg.bot .chat-bubble ol { padding-left: 18px; margin-bottom: 8px; }
+.chat-msg.bot .chat-bubble li { margin-bottom: 4px; }
+.chat-msg.bot .chat-bubble strong { color: #10B981; font-weight: 700; }
+.chat-msg.bot .chat-bubble em { color: #94A3B8; font-style: italic; }
+.chat-msg.bot .chat-bubble code {
+    background: rgba(0,0,0,0.3);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-family: monospace;
 }

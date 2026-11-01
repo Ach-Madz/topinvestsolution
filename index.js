@@ -12,16 +12,13 @@ const app = express();
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-const GEMINI_MODEL = 'gemini-2.0-flash';
+const MODELS = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.8-flash'];
 
 app.use(cors());
 app.use(express.json());
 
+// Serve static files (untuk development lokal)
 app.use(express.static(path.join(__dirname, 'public')));
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => console.log(`Server ready on http://localhost:${PORT}`));
 
 app.post('/api/chat', async (req, res) => {
     const { conversation } = req.body;
@@ -34,15 +31,43 @@ app.post('/api/chat', async (req, res) => {
             parts: [{ text }]
         }));
 
-        const response = await ai.models.generateContent({
-            model: GEMINI_MODEL,
-            contents,
-            config: {
-                systemInstruction:'TISAIAssistant(TopInvestSolution)NamaKarakter:TISAssistant(VirtualInvestmentAdvisorTopInvestSolution).Persona:Profesional,tepercaya,objektif,ramah,analitis,danberpengalamandibidangkeuangan,manajemenaset,sertainstrumeninvestasi.TujuanUtama:MembuatpenggunamenavigasidiplatformTIS,memahamiprofilrisiko,mengenaliprodukinvestasi,memberikanedukasifinansialdasar,sertamenjawabpertanyaanlayanandenganakurat.GunakanBahasaIndonesia yang profesional,sopan,formal,dantetapmudahdipahami.GayaPenyampaianobjektif,berbasisdataplatform,sertaempati.Cakupantugasmeliputi:panduanonboarding,verifikasiakun,danaksesdasborportofolio;penjelasaninstrumeninvestasisecaraobjektif;bantuanpenggunaankalkulatorinvestasidanproyeksidana;sertamenjawabFAQseputarbiaya,penarikandana,keamanan,danproseduroperasional.Batasan&AturanKeamanan:AIdilarangkerasmemberikanrekomendasiinvestasipersonalmutlakatauforcedbuy/sellsignalharusdisertaipenafianrisiko;dilarangmenjanjikankeuntunganpasti(fixed/guaranteedreturn)kecualiinstrumentertentu yang dijaminnegara;dilarangmemintapassword,PIN,OTP,ataunomorrekeningmelaluichat;kendalateknisberatatausengketawajibdiarahkankeLiveAgentatauCustomerSupportresmiTIS.FormatTanggapanmenggunakanpoin-poindanselalu diakhiri dengan kalimat penutup yang solutif.'
+        const systemInstruction = 'TIS AI Assistant (TopInvest Solution) Nama Karakter: TIS Assistant (Virtual Investment Advisor TopInvest Solution). Persona: Profesional, tepercaya, objektif, ramah, analitis, dan berpengalaman di bidang keuangan, manajemen aset, serta instrumen investasi. Tujuan Utama: Membantu pengguna memahami profil risiko, mengenali produk investasi, memberikan edukasi finansial dasar, serta menjawab pertanyaan layanan dengan akurat. Format: Gunakan Bahasa Indonesia yang ramah, sopan, dan jelas.';
+
+        let responseText = null;
+        let lastError = null;
+
+        for (const model of MODELS) {
+            try {
+                const response = await ai.models.generateContent({
+                    model,
+                    contents,
+                    config: { systemInstruction }
+                });
+                if (response && response.text) {
+                    responseText = response.text;
+                    break;
+                }
+            } catch (err) {
+                console.warn(`Model ${model} failed:`, err.message);
+                lastError = err;
             }
-        });
-        res.status(200).json({ result: response.text });
+        }
+
+        if (!responseText) {
+            throw lastError || new Error('All AI models are currently busy');
+        }
+
+        res.status(200).json({ result: responseText });
     } catch (e) {
-        res.status(500).json({ error: e.message })
+        console.error('Chat API Error:', e.message);
+        res.status(500).json({ error: e.message });
     }   
 });
+
+// Jalankan server hanya saat development lokal (bukan di Vercel)
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Server ready on http://localhost:${PORT}`));
+}
+
+export default app;
